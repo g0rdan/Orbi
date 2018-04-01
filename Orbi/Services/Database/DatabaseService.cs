@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Orbi.Models;
 using SQLite;
 
@@ -153,6 +154,22 @@ namespace Orbi.Services
             {
                 return new List<Video>();
             }
+        }
+
+        // TODO: Add cancelation tokens
+        public async Task<List<Album>> GetAlbumsAsync()
+        {
+            return await Task.Factory.StartNew(GetAlbums).ConfigureAwait(false);
+        }
+
+        public async Task<List<Video>> GetVideosAsync()
+        {
+            return await Task.Factory.StartNew(GetVideos).ConfigureAwait(false);
+        }
+
+        public async Task<List<Video>> GetVideosAsync(Album album)
+        {
+            return await Task.Factory.StartNew(() => { return GetVideos(album); } ).ConfigureAwait(false);
         }
     }
 }

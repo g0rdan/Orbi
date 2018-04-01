@@ -1,17 +1,30 @@
 ﻿using System;
+using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
 
 namespace Orbi.ViewModels
 {
 	public class MainViewModel : MvxViewModel
     {
-        public MainViewModel()
+        readonly IMvxNavigationService _navigationService;
+
+        public IMvxCommand OpenAllVideosCommand => new MvxCommand(OpenAllVideos);
+
+        public IMvxCommand OpenAlbumsCommand => new MvxCommand(OpenAlbums);
+
+        public MainViewModel(IMvxNavigationService navigationService)
         {
+            _navigationService = navigationService;
         }
 
-		public override void Start()
-		{
-			base.Start();
-		}
+        void OpenAllVideos()
+        {
+            _navigationService.Navigate<AllVideosViewModel>();
+        }
+
+        void OpenAlbums()
+        {
+            _navigationService.Navigate<AlbumsListViewModel>();
+        }
 	}
 }

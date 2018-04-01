@@ -37,6 +37,12 @@
     <Compile Include="Services\File\IFileService.cs" />
     <Compile Include="Services\Database\DatabaseService.cs" />
     <Compile Include="Models\AlbumVideo.cs" />
+    <Compile Include="ViewModels\Album\AlbumsListViewModel.cs" />
+    <Compile Include="ViewModels\Album\AlbumCellViewModel.cs" />
+    <Compile Include="ViewModels\Video\VideosViewModel.cs" />
+    <Compile Include="ViewModels\Video\VideoCellViewModel.cs" />
+    <Compile Include="ViewModels\Video\AllVideosViewModel.cs" />
+    <Compile Include="ViewModels\Album\CreateAlbumViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">
@@ -79,6 +85,8 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Database\" />
     <Folder Include="Services\File\" />
+    <Folder Include="ViewModels\Album\" />
+    <Folder Include="ViewModels\Video\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

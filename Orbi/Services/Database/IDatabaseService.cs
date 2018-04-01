@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Orbi.Models;
 
 namespace Orbi.Services
@@ -24,14 +25,28 @@ namespace Orbi.Services
         /// <returns>The albums.</returns>
         List<Album> GetAlbums();
         /// <summary>
+        /// Get albums from database asynchronously
+        /// </summary>
+        /// <returns>The albums.</returns>
+        Task<List<Album>> GetAlbumsAsync();
+        /// <summary>
         /// Get all videos from database
         /// </summary>
         List<Video> GetVideos();
+        /// <summary>
+        /// Get all videos from database asynchronously
+        /// </summary>
+        Task<List<Video>> GetVideosAsync();
         /// <summary>
         /// Gets the videos from database
         /// </summary>
         /// <param name="album">Get specific album videos</param>
         List<Video> GetVideos(Album album);
+        /// <summary>
+        /// Gets the videos from database asynchronously
+        /// </summary>
+        /// <param name="album">Get specific album videos</param>
+        Task<List<Video>> GetVideosAsync(Album album);
         /// <summary>
         /// Adding album to the database
         /// </summary>
