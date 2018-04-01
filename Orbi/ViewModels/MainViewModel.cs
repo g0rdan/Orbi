@@ -9,7 +9,6 @@ namespace Orbi.ViewModels
         readonly IMvxNavigationService _navigationService;
 
         public IMvxCommand OpenAllVideosCommand => new MvxCommand(OpenAllVideos);
-
         public IMvxCommand OpenAlbumsCommand => new MvxCommand(OpenAlbums);
 
         public MainViewModel(IMvxNavigationService navigationService)
