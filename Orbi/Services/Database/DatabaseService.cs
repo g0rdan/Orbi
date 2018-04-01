@@ -128,6 +128,12 @@ namespace Orbi.Services
         {
             try
             {
+                //TODO: remove this later
+                return new List<Video> { 
+                    new Video { FileName = "Video1" },
+                    new Video { FileName = "Video2" },
+                    new Video { FileName = "Video3" },
+                };
                 return _connection?.Table<Video>().ToList();
             }
             catch (SQLiteException)

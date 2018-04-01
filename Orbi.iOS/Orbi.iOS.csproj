@@ -135,10 +135,12 @@
     <Folder Include="Resources\" />
     <Folder Include="Views\" />
     <Folder Include="Services\" />
+    <Folder Include="TableSources\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="TableSources\AllVideosViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -158,6 +160,11 @@
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Views\AllVideosView.cs" />
     <Compile Include="Views\AlbumsView.cs" />
+    <Compile Include="TableSources\AllVideosTableSource.cs" />
+    <Compile Include="TableSources\AllVideosViewCell.cs" />
+    <Compile Include="TableSources\AllVideosViewCell.designer.cs">
+      <DependentUpon>AllVideosViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">
