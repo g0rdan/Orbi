@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using SQLite;
 
 namespace Orbi.Models
@@ -15,11 +14,11 @@ namespace Orbi.Models
         [NotNull]
         public string Title { get; set; }
         public DateTime Created { get; set; }
-            
+
         public Album()
         {
             GUID = Guid.NewGuid().ToString();
             Created = DateTime.UtcNow;
         }
-	}
+    }
 }

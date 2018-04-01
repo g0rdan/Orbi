@@ -2,7 +2,10 @@
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
+using MvvmCross.Platform;
 using MvvmCross.Platform.Platform;
+using Orbi.iOS.Services;
+using Orbi.Services;
 using UIKit;
 
 namespace Orbi.iOS
@@ -21,6 +24,7 @@ namespace Orbi.iOS
         
         protected override IMvxApplication CreateApp()
         {
+            SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_sqlite3());
             return new App();
         }
 
@@ -29,11 +33,11 @@ namespace Orbi.iOS
             return new DebugTrace();
         }
 
-        //protected override void InitializeFirstChance()
-        //{
-        //    base.InitializeFirstChance();
-        //    Mvx.RegisterSingleton<IFileService>(new FileService());
-        //}
+        protected override void InitializeFirstChance()
+        {
+            base.InitializeFirstChance();
+            Mvx.RegisterSingleton<IFileService>(new FileService());
+        }
 
         protected override IMvxIosViewPresenter CreatePresenter()
         {
