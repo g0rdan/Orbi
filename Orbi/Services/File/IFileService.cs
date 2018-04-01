@@ -20,5 +20,9 @@ namespace Orbi.Services
         /// Inits the files.
         /// </summary>
         void InitFiles();
+        /// <summary>
+        /// Gets video files from home folder as byte array
+        /// </summary>
+        byte[] GetVideoFile(string filename);
     }
 }

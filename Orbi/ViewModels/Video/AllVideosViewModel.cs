@@ -12,15 +12,21 @@ namespace Orbi.ViewModels
     {
         readonly IMvxNavigationService _navigationService;
         readonly IDatabaseService _databaseService;
+        readonly IFileService _fileService;
 
         public MvxObservableCollection<VideoCellViewModel> Items { get; set; }
 
         public IMvxCommand<Video> OpenVideoCommand => new MvxCommand<Video>(OpenVideo);
 
-        public AllVideosViewModel(IMvxNavigationService navigationService, IDatabaseService databaseService)
+        public AllVideosViewModel(
+            IMvxNavigationService navigationService, 
+            IDatabaseService databaseService, 
+            IFileService fileService
+        )
         {
             _navigationService = navigationService;
             _databaseService = databaseService;
+            _fileService = fileService;
         }
 
 		public override void Prepare()
@@ -38,8 +44,8 @@ namespace Orbi.ViewModels
                 {
                     Items.Add(new VideoCellViewModel
                     {
-                        FileName = video.FileName,
-                        Title = video.Title
+                        Title = video.Title,
+                        Data = _fileService.GetVideoFile(video.FileName)
                     });
                 }
             }

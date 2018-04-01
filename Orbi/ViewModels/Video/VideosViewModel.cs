@@ -13,16 +13,19 @@ namespace Orbi.ViewModels
         Album _owner;
         readonly IMvxNavigationService _navigationService;
         readonly IDatabaseService _databaseService;
+        readonly IFileService _fileService;
 
         public MvxObservableCollection<VideoCellViewModel> Items { get; set; }
 
-        public VideosViewModel()
+        public VideosViewModel(IDatabaseService databaseService, IFileService fileService)
         {
+            _databaseService = databaseService;
+            _fileService = fileService;
         }
 
-        public override void Prepare(Album album)
+        public override void Prepare(Album parameter)
         {
-            _owner = album;
+            _owner = parameter;
             Items = new MvxObservableCollection<VideoCellViewModel>();
         }
 
@@ -35,8 +38,8 @@ namespace Orbi.ViewModels
                 {
                     Items.Add(new VideoCellViewModel
                     {
-                        FileName = video.FileName,
-                        Title = video.Title
+                        Title = video.Title,
+                        Data = _fileService.GetVideoFile(video.FileName)
                     });
                 }
             }

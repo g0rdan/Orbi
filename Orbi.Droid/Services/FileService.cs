@@ -39,6 +39,12 @@ namespace Orbi.Droid.Services
             }
         }
 
+        public byte[] GetVideoFile(string filename)
+        {
+            var path = Path.Combine(ApplicationFolderPath, filename);
+            return File.ReadAllBytes(path);
+        }
+
         public void InitFiles()
         {
             CopyFileFromAssets(DATABASE_NAME);
