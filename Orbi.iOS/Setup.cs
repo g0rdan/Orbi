@@ -3,7 +3,9 @@ using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
 using MvvmCross.iOS.Views.Presenters;
 using MvvmCross.Platform;
+using MvvmCross.Platform.Converters;
 using MvvmCross.Platform.Platform;
+using Orbi.iOS.Converters;
 using Orbi.iOS.Services;
 using Orbi.Services;
 using UIKit;
@@ -39,7 +41,13 @@ namespace Orbi.iOS
             Mvx.RegisterSingleton<IFileService>(new FileService());
         }
 
-        protected override IMvxIosViewPresenter CreatePresenter()
+		protected override void FillValueConverters(IMvxValueConverterRegistry registry)
+		{
+            base.FillValueConverters(registry);
+            registry.AddOrOverwrite(nameof(ImageConverter), new ImageConverter());
+		}
+
+		protected override IMvxIosViewPresenter CreatePresenter()
         {
             return new MvxIosViewPresenter(ApplicationDelegate, Window);
         }

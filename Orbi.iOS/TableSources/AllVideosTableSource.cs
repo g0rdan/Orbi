@@ -1,6 +1,7 @@
 ﻿using System;
 using Foundation;
 using MvvmCross.Binding.iOS.Views;
+using Orbi.iOS.TableSources;
 using UIKit;
 
 namespace Orbi.iOS
@@ -23,5 +24,10 @@ namespace Orbi.iOS
                 //UITableViewCellAccessory.None;
             return cell;
         }
-    }
+
+		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+		{
+            return AllVideosViewCell.CellHeight;
+		}
+	}
 }

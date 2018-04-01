@@ -17,11 +17,20 @@ namespace Orbi.iOS.TableSources
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel FilenameLabel { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView ImageView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (FilenameLabel != null) {
                 FilenameLabel.Dispose ();
                 FilenameLabel = null;
+            }
+
+            if (ImageView != null) {
+                ImageView.Dispose ();
+                ImageView = null;
             }
         }
     }

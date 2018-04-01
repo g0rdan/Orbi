@@ -136,6 +136,7 @@
     <Folder Include="Views\" />
     <Folder Include="Services\" />
     <Folder Include="TableSources\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -165,6 +166,7 @@
     <Compile Include="TableSources\AllVideosViewCell.designer.cs">
       <DependentUpon>AllVideosViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Converters\ImageConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">
