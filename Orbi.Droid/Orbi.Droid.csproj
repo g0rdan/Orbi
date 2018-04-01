@@ -161,6 +161,7 @@
     <AndroidResource Include="Resources\layout\MainView.axml" />
     <AndroidResource Include="Resources\layout\AllVideosView.axml" />
     <AndroidResource Include="Resources\layout\AlbumsView.axml" />
+    <AndroidResource Include="Resources\layout\video_cell_view.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

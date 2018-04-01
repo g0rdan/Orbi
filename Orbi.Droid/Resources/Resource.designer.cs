@@ -5089,6 +5089,9 @@ namespace Orbi.Droid
 			// aapt resource value: 0x7f04003e
 			public const int tooltip = 2130968638;
 			
+			// aapt resource value: 0x7f04003f
+			public const int video_cell_view = 2130968639;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
