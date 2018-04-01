@@ -10,8 +10,6 @@ namespace Orbi.Droid
     [Activity(Label = "orbi", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainActivity : MvxAppCompatActivity<MainViewModel>
     {
-        int count = 1;
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);         
