@@ -32,6 +32,7 @@ namespace Orbi.Services
                 _connection?.CreateTable<Album>(CreateFlags.None);
                 _connection?.CreateTable<Video>(CreateFlags.None);
                 _connection?.CreateTable<AlbumVideo>(CreateFlags.None);
+                FillWithData();
             }
             catch (SQLiteException)
             {
@@ -128,12 +129,6 @@ namespace Orbi.Services
         {
             try
             {
-                //TODO: remove this later
-                return new List<Video> { 
-                    new Video { FileName = "Video1" },
-                    new Video { FileName = "Video2" },
-                    new Video { FileName = "Video3" },
-                };
                 return _connection?.Table<Video>().ToList();
             }
             catch (SQLiteException)
@@ -176,6 +171,24 @@ namespace Orbi.Services
         public async Task<List<Video>> GetVideosAsync(Album album)
         {
             return await Task.Factory.StartNew(() => { return GetVideos(album); } ).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Helps with filling the data at first launch
+        /// </summary>
+        void FillWithData()
+        {
+            var videos = GetVideos();
+            if (videos == null || !videos.Any())
+            {
+                _connection?.InsertAll(new List<Video> {
+                        new Video { FileName = "1.jpg", Title = "Melvy" },
+                        new Video { FileName = "2.jpeg", Title = "Marvin" },
+                        new Video { FileName = "3.jpeg", Title = "Boris" },
+                        new Video { FileName = "4.jpg", Title = "Snowflake" },
+                        new Video { FileName = "5.jpg", Title = "Crew" },
+                    });
+            }
         }
     }
 }

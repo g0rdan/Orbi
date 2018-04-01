@@ -7,7 +7,7 @@
     <TextView
         android:textColor="@android:color/black"
         android:textSize="14dp"
-        app:MvxBind="Text FileName"
+        app:MvxBind="Text Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>

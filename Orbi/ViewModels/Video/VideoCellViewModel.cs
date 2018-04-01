@@ -6,7 +6,7 @@ namespace Orbi.ViewModels
     public class VideoCellViewModel : MvxViewModel
     {
         public string FileName { get; set; }
-        public byte[] Data { get; set; }
+        public string Title { get; set; }
 
         public VideoCellViewModel()
         {

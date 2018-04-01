@@ -12,9 +12,13 @@ namespace Orbi.Services
         /// </summary>
         string DatabasePath { get; }
         /// <summary>
-        /// Coping empty database from asset folders to work at first
+        /// Coping a file from asset folders to work at first
         /// application launch
         /// </summary>
-        void CopyEmptyDatabase();
+        void CopyFileFromAssets(string filename);
+        /// <summary>
+        /// Inits the files.
+        /// </summary>
+        void InitFiles();
     }
 }

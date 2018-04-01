@@ -18,7 +18,8 @@ namespace Orbi
 
             SQLitePCL.Batteries_V2.Init();
 
-            Mvx.Resolve<IFileService>().CopyEmptyDatabase();
+            Mvx.Resolve<IFileService>().InitFiles();
+
             System.Diagnostics.Debug.WriteLine(Mvx.Resolve<IFileService>().ApplicationFolderPath);
             Mvx.Resolve<IDatabaseService>().InitConnection();
             Mvx.Resolve<IDatabaseService>().InitTables();

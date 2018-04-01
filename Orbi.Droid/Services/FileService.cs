@@ -7,8 +7,7 @@ namespace Orbi.Droid.Services
 {
     public class FileService : IFileService
     {
-        const string EMPTY_DATABASE_NAME = "empty.sqlite";
-        const string REAL_DATABASE_NAME = "data.sqlite";
+        const string DATABASE_NAME = "data.sqlite";
 
         public FileService()
         {
@@ -16,18 +15,18 @@ namespace Orbi.Droid.Services
 
         public string ApplicationFolderPath => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-        public string DatabasePath => Path.Combine(ApplicationFolderPath, REAL_DATABASE_NAME);
+        public string DatabasePath => Path.Combine(ApplicationFolderPath, DATABASE_NAME);
 
-        public void CopyEmptyDatabase()
+        public void CopyFileFromAssets(string filename)
         {
             try
             {
-                if (!File.Exists(REAL_DATABASE_NAME))
+                if (!File.Exists(Path.Combine(ApplicationFolderPath, filename)))
                 {
                     AssetManager assetManager = Android.App.Application.Context.Assets;
-                    using (StreamReader sr = new StreamReader(assetManager.Open(EMPTY_DATABASE_NAME)))
+                    using (StreamReader sr = new StreamReader(assetManager.Open(filename)))
                     {
-                        using (Stream file = File.Create(DatabasePath))
+                        using (Stream file = File.Create(Path.Combine(ApplicationFolderPath, filename)))
                         {
                             CopyStream(sr.BaseStream, file);
                         }
@@ -38,6 +37,16 @@ namespace Orbi.Droid.Services
             {
 
             }
+        }
+
+        public void InitFiles()
+        {
+            CopyFileFromAssets(DATABASE_NAME);
+            CopyFileFromAssets("1.jpg");
+            CopyFileFromAssets("2.jpeg");
+            CopyFileFromAssets("3.jpeg");
+            CopyFileFromAssets("4.jpg");
+            CopyFileFromAssets("5.jpg");
         }
 
         void CopyStream(Stream input, Stream output)

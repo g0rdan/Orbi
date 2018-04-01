@@ -13,9 +13,8 @@ namespace Orbi.Models
         public string GUID { get; set; }
         [NotNull]
         public string FileName { get; set; }
-        /// README: this property is temporary representing video data (video file)
-        /// It means I won't use videos as files for now. It'll store here, in database
-        public byte[] Data { get; set; }
+        [NotNull]
+        public string Title { get; set; }
         public DateTime Created { get; set; }
 
         public Video()

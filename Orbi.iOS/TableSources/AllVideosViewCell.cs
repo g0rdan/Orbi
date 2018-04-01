@@ -22,7 +22,7 @@ namespace Orbi.iOS.TableSources
         {
             this.DelayBind(() => {
                 var set = this.CreateBindingSet<AllVideosViewCell, VideoCellViewModel>();
-                set.Bind(FilenameLabel).To(vm => vm.FileName);
+                set.Bind(FilenameLabel).To(vm => vm.Title);
                 set.Apply();
             });
         }

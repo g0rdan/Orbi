@@ -36,7 +36,7 @@ namespace Orbi.ViewModels
                     Items.Add(new VideoCellViewModel
                     {
                         FileName = video.FileName,
-                        Data = video.Data
+                        Title = video.Title
                     });
                 }
             }

@@ -175,7 +175,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\empty.sqlite" />
+    <AndroidAsset Include="Assets\data.sqlite" />
+    <AndroidAsset Include="Assets\1.jpg" />
+    <AndroidAsset Include="Assets\2.jpeg" />
+    <AndroidAsset Include="Assets\3.jpeg" />
+    <AndroidAsset Include="Assets\4.jpg" />
+    <AndroidAsset Include="Assets\5.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Annotations.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Annotations.27.0.2\build\MonoAndroid81\Xamarin.Android.Support.Annotations.targets')" />

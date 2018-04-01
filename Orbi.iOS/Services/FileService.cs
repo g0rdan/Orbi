@@ -6,8 +6,7 @@ namespace Orbi.iOS.Services
 {
     public class FileService : IFileService
     {
-        const string EMPTY_DATABASE_NAME = "empty.sqlite";
-        const string REAL_DATABASE_NAME = "data.sqlite";
+        const string DATABASE_NAME = "data.sqlite";
 
         public FileService()
         {
@@ -15,18 +14,28 @@ namespace Orbi.iOS.Services
 
         public string ApplicationFolderPath => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-        public string DatabasePath => Path.Combine(ApplicationFolderPath, REAL_DATABASE_NAME);
+        public string DatabasePath => Path.Combine(ApplicationFolderPath, DATABASE_NAME);
 
-        public void CopyEmptyDatabase()
+        public void CopyFileFromAssets(string filename)
         {
             try
             {
-                File.Copy(EMPTY_DATABASE_NAME, DatabasePath, false);
+                File.Copy(filename, Path.Combine(ApplicationFolderPath, filename), false);
             }
             catch (IOException)
             {
 
             }
+        }
+
+        public void InitFiles()
+        {
+            CopyFileFromAssets(DATABASE_NAME);
+            CopyFileFromAssets("1.jpg");
+            CopyFileFromAssets("2.jpeg");
+            CopyFileFromAssets("3.jpeg");
+            CopyFileFromAssets("4.jpg");
+            CopyFileFromAssets("5.jpg");
         }
     }
 }
