@@ -163,6 +163,7 @@
     <AndroidResource Include="Resources\layout\AllVideosView.axml" />
     <AndroidResource Include="Resources\layout\AlbumsView.axml" />
     <AndroidResource Include="Resources\layout\video_cell_view.axml" />
+    <AndroidResource Include="Resources\values\Dimens.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

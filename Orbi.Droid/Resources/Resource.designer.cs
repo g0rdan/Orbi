@@ -3951,6 +3951,9 @@ namespace Orbi.Droid
 			// aapt resource value: 0x7f080060
 			public const int tooltip_y_offset_touch = 2131230816;
 			
+			// aapt resource value: 0x7f08009b
+			public const int video_cell_size = 2131230875;
+			
 			static Dimension()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

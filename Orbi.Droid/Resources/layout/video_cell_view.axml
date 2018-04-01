@@ -6,8 +6,8 @@
     android:layout_height="match_parent">
     <ImageView
         app:MvxBind="Bitmap ImageConverter(Data)"
-        android:layout_width="200dp"
-        android:layout_height="200dp" />
+        android:layout_width="@dimen/video_cell_size"
+        android:layout_height="@dimen/video_cell_size" />
     <TextView
         android:textColor="@android:color/black"
         android:paddingLeft="10dp"
