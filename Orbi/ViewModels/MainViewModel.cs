@@ -24,7 +24,7 @@ namespace Orbi.ViewModels
 
         void OpenAlbums()
         {
-            _navigationService.Navigate<AlbumsListViewModel>();
+            _navigationService.Navigate<AlbumsViewModel>();
         }
 	}
 }

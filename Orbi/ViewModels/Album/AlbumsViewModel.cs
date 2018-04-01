@@ -8,7 +8,7 @@ using Orbi.Services;
 
 namespace Orbi.ViewModels
 {
-    public class AlbumsListViewModel : MvxViewModel
+    public class AlbumsViewModel : MvxViewModel
     {
         readonly IMvxNavigationService _navigationService;
         readonly IDatabaseService _databaseService;
@@ -30,7 +30,7 @@ namespace Orbi.ViewModels
         public IMvxCommand CreateAlbumCommand => new MvxCommand(CreateAlbum);
         #endregion
 
-        public AlbumsListViewModel(IMvxNavigationService navigationService, IDatabaseService databaseService)
+        public AlbumsViewModel(IMvxNavigationService navigationService, IDatabaseService databaseService)
         {
             _navigationService = navigationService;
             _databaseService = databaseService;

@@ -37,7 +37,7 @@
     <Compile Include="Services\File\IFileService.cs" />
     <Compile Include="Services\Database\DatabaseService.cs" />
     <Compile Include="Models\AlbumVideo.cs" />
-    <Compile Include="ViewModels\Album\AlbumsListViewModel.cs" />
+    <Compile Include="ViewModels\Album\AlbumsViewModel.cs" />
     <Compile Include="ViewModels\Album\AlbumCellViewModel.cs" />
     <Compile Include="ViewModels\Video\VideosViewModel.cs" />
     <Compile Include="ViewModels\Video\VideoCellViewModel.cs" />

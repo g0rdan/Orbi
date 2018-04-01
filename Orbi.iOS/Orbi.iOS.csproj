@@ -156,6 +156,8 @@
     <Compile Include="Setup.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Services\FileService.cs" />
+    <Compile Include="Views\AllVideosView.cs" />
+    <Compile Include="Views\AlbumsView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">
