@@ -2,7 +2,9 @@ using Android.Content;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Platform;
+using MvvmCross.Platform.Converters;
 using MvvmCross.Platform.Platform;
+using Orbi.Droid.Converters;
 using Orbi.Droid.Services;
 using Orbi.Services;
 
@@ -23,6 +25,12 @@ namespace Orbi.Droid
         protected override IMvxTrace CreateDebugTrace()
         {
             return new DebugTrace();
+        }
+
+        protected override void FillValueConverters(IMvxValueConverterRegistry registry)
+        {
+            base.FillValueConverters(registry);
+            registry.AddOrOverwrite(nameof(ImageConverter), new ImageConverter());
         }
 
 		protected override void InitializeFirstChance()

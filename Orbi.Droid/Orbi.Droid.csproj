@@ -144,6 +144,7 @@
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\AllVideosActivity.cs" />
     <Compile Include="Activities\AlbumsActivity.cs" />
+    <Compile Include="Converters\ImageConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -167,6 +168,7 @@
     <Folder Include="Resources\drawable\" />
     <Folder Include="Services\" />
     <Folder Include="Activities\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">
