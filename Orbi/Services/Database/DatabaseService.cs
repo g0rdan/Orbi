@@ -64,12 +64,25 @@ namespace Orbi.Services
             }
         }
 
+        [Obsolete("Obsolete method", true)]
         public void AddVideo(Video video, Album album)
         {
             try
             {
                 _connection?.Insert(video);
                 _connection?.Insert(new AlbumVideo(album.GUID, video.GUID));
+            }
+            catch (SQLiteException)
+            {
+
+            }
+        }
+
+        public void AddVideo(string videoGuid, string audioGuid)
+        {
+            try
+            {
+                _connection?.Insert(new AlbumVideo(audioGuid, videoGuid));
             }
             catch (SQLiteException)
             {
@@ -175,7 +188,7 @@ namespace Orbi.Services
         {
             try
             {
-                var query = "SELECT v, cp.id_category " +
+                var query = "SELECT * " +
                             "FROM Video as v " +
                             "INNER JOIN AlbumVideo as av " +
                                 "ON v.GUID = av.Video_GUID " +
@@ -216,11 +229,11 @@ namespace Orbi.Services
             if (videos == null || !videos.Any())
             {
                 _connection?.InsertAll(new List<Video> {
-                        new Video { FileName = "1.jpg", Title = "Melvy" },
-                        new Video { FileName = "2.jpeg", Title = "Marvin" },
-                        new Video { FileName = "3.jpeg", Title = "Boris" },
-                        new Video { FileName = "4.jpg", Title = "Snowflake" },
-                        new Video { FileName = "5.jpg", Title = "Crew" },
+                        new Video { FileName = "1.jpg", Name = "Melvy" },
+                        new Video { FileName = "2.jpeg", Name = "Marvin" },
+                        new Video { FileName = "3.jpeg", Name = "Boris" },
+                        new Video { FileName = "4.jpg", Name = "Snowflake" },
+                        new Video { FileName = "5.jpg", Name = "Crew" },
                     });
             }
         }

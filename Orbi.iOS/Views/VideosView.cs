@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using CoreGraphics;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
@@ -47,6 +48,7 @@ namespace Orbi.iOS.Views
             {
                 case VideoScreenType.Select:
                     set.Bind(_rightBtn).To(vm => vm.AddVideosCommand);
+                    set.Bind(_rightBtn).For("Enabled").To(vm => vm.DoneBtnEnabled);
                     break;
                 case VideoScreenType.Custom:
                     set.Bind(_rightBtn).To(vm => vm.OpenVideosForSelectCommand);
@@ -79,9 +81,21 @@ namespace Orbi.iOS.Views
             _videosTableView = new UITableView(View.Frame);
             _videosTableView.TableFooterView = new UIView();
             _source = new VideosTableSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
+            _source.SelectedItemAction = ItemSelected;
+            _source.DeselecetdItemAction = ItemDeselected;
             _videosTableView.Source = _source;
             _videosTableView.AllowsMultipleSelection = ViewModel.ScreenType == VideoScreenType.Select;
             View.AddSubview(_videosTableView);
+        }
+
+        void ItemSelected(int index)
+        {
+            ViewModel.AddSelectedItem(index);
+        }
+
+        void ItemDeselected(int index)
+        {
+            ViewModel.RemoveSelectedItem(index);
         }
 	}
 }

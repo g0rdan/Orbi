@@ -14,7 +14,7 @@ namespace Orbi.Models
         [NotNull]
         public string FileName { get; set; }
         [NotNull]
-        public string Title { get; set; }
+        public string Name { get; set; }
         public DateTime Created { get; set; }
 
         public Video()

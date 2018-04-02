@@ -98,7 +98,10 @@ namespace Orbi.ViewModels
             {
                 var newAlbum = new Album { Title = result.Title };
                 _databaseService.AddAlbum(newAlbum);
-                Albums.Add(new AlbumCellViewModel { Name = newAlbum.Title });
+                Albums.Add(new AlbumCellViewModel { 
+                    GUID = newAlbum.GUID, 
+                    Name = newAlbum.Title 
+                });
             }
         }
     }

@@ -74,6 +74,10 @@ namespace Orbi.Services
 		/// </summary>
 		void AddVideo(Video video, Album album);
         /// <summary>
+        /// Adding video to a specific album
+        /// </summary>
+        void AddVideo(string videoGuid, string audioGuid);
+        /// <summary>
         /// Deleting video from database completely
         /// </summary>
         void DeleteVideo(Video video);
