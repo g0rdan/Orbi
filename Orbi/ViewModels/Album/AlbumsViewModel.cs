@@ -12,6 +12,7 @@ namespace Orbi.ViewModels
     {
         readonly IMvxNavigationService _navigationService;
         readonly IDatabaseService _databaseService;
+        readonly IDialogService _dialogService;
 
         public MvxObservableCollection<AlbumCellViewModel> Albums { get; set; }
 
@@ -27,13 +28,14 @@ namespace Orbi.ViewModels
         /// <summary>
         /// Creating a new album in new view model
         /// </summary>
-        public IMvxCommand CreateAlbumCommand => new MvxCommand(CreateAlbum);
+        public IMvxAsyncCommand CreateAlbumCommand => new MvxAsyncCommand(CreateAlbum);
         #endregion
 
-        public AlbumsViewModel(IMvxNavigationService navigationService, IDatabaseService databaseService)
+        public AlbumsViewModel(IMvxNavigationService navigationService, IDatabaseService databaseService, IDialogService dialogService)
         {
             _navigationService = navigationService;
             _databaseService = databaseService;
+            _dialogService = dialogService;
         }
 
         public override void Prepare()
@@ -61,16 +63,25 @@ namespace Orbi.ViewModels
             _navigationService.Navigate<VideosViewModel, Album>(album);
         }
 
-        void CreateAlbum()
-        {
-            _navigationService.Navigate<CreateAlbumViewModel>();
-        }
-
         void DeleteAlbum(Album album)
         {
             if (album != null)
             {
                 _databaseService.DeleteAlbum(album);
+                var cellCandidate = Albums.FirstOrDefault(x => x.Name == album.Title);
+                if (cellCandidate != null)
+                    Albums.Remove(cellCandidate);
+            }
+        }
+
+        async Task CreateAlbum()
+        {
+            var result = await _dialogService.AskToAddAlbum();
+            if (result.IsOk)
+            {
+                var newAlbum = new Album { Title = result.Title };
+                _databaseService.AddAlbum(newAlbum);
+                Albums.Add(new AlbumCellViewModel { Name = newAlbum.Title });
             }
         }
     }

@@ -31,7 +31,6 @@ namespace Orbi.iOS.Views
 
             var set = this.CreateBindingSet<AllVideosView, AllVideosViewModel>();
             set.Bind(tableSource).To(vm => vm.Items);
-            //set.Bind(tableSource).For(s => s.SelectionChangedCommand).To(vm => vm.ClickToItemViewCell);
             set.Apply();
 		}
 	}

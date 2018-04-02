@@ -1,4 +1,5 @@
 ﻿using System;
+using Acr.UserDialogs;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
@@ -23,6 +24,8 @@ namespace Orbi
             System.Diagnostics.Debug.WriteLine(Mvx.Resolve<IFileService>().ApplicationFolderPath);
             Mvx.Resolve<IDatabaseService>().InitConnection();
             Mvx.Resolve<IDatabaseService>().InitTables();
+
+            Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 
             RegisterNavigationServiceAppStart<MainViewModel>();
         }

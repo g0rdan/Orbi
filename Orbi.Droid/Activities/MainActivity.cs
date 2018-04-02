@@ -4,6 +4,7 @@ using Android.OS;
 using Android.Support.V7.Widget;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using Orbi.ViewModels;
+using Acr.UserDialogs;
 
 namespace Orbi.Droid
 {
@@ -13,7 +14,7 @@ namespace Orbi.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);         
-            // Set our view from the "main" layout resource
+            UserDialogs.Init(this);
 			SetContentView(Resource.Layout.MainView);
         }
     }
