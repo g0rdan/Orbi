@@ -9,10 +9,10 @@ using UIKit;
 
 namespace Orbi.iOS.Views
 {
-    [MvxChildPresentationAttribute]
+    [MvxChildPresentation]
     public class VideosView : MvxViewController<VideosViewModel>
     {
-        UIBarButtonItem _addBtn;
+        UIBarButtonItem _rightBtn;
         UILabel _titleLabel;
         UITableView _videosTableView;
         VideosTableSource _source;
@@ -25,14 +25,34 @@ namespace Orbi.iOS.Views
 		{
             base.ViewDidLoad();
 
-            _addBtn = new UIBarButtonItem(UIBarButtonSystemItem.Add);
-            NavigationItem.RightBarButtonItem = _addBtn;
+            switch (ViewModel.ScreenType)
+            {
+                case VideoScreenType.Select:
+                    _rightBtn = new UIBarButtonItem(UIBarButtonSystemItem.Done);
+                    break;
+                case VideoScreenType.Custom:
+                    _rightBtn = new UIBarButtonItem(UIBarButtonSystemItem.Add);
+                    break;
+            }
+
+            if (_rightBtn != null)
+                NavigationItem.RightBarButtonItem = _rightBtn;
 
             InitTitleView();
             InitTable();
 
             var set = this.CreateBindingSet<VideosView, VideosViewModel>();
-            set.Bind(_addBtn).To(vm => vm.AddVideosCommand);
+
+            switch (ViewModel.ScreenType)
+            {
+                case VideoScreenType.Select:
+                    set.Bind(_rightBtn).To(vm => vm.AddVideosCommand);
+                    break;
+                case VideoScreenType.Custom:
+                    set.Bind(_rightBtn).To(vm => vm.OpenVideosForSelectCommand);
+                    break;
+            }
+
             set.Bind(_titleLabel).To(vm => vm.Title);
             set.Bind(_source).To(vm => vm.Items);
             set.Apply();
@@ -60,6 +80,7 @@ namespace Orbi.iOS.Views
             _videosTableView.TableFooterView = new UIView();
             _source = new VideosTableSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
             _videosTableView.Source = _source;
+            _videosTableView.AllowsMultipleSelection = ViewModel.ScreenType == VideoScreenType.Select;
             View.AddSubview(_videosTableView);
         }
 	}

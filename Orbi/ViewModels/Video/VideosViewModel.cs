@@ -16,8 +16,9 @@ namespace Orbi.ViewModels
         readonly IFileService _fileService;
 
         public string Title { get; private set; }
-        public bool IsSelecting { get; private set; }
+        public VideoScreenType ScreenType { get; set; }
         public MvxObservableCollection<VideoCellViewModel> Items { get; set; }
+        public IMvxCommand OpenVideosForSelectCommand => new MvxCommand(OpenVideosForSelect);
         public IMvxCommand AddVideosCommand => new MvxCommand(AddVideos);
 
         public VideosViewModel(
@@ -35,23 +36,27 @@ namespace Orbi.ViewModels
         // watch all videos
 		public override void Prepare()
 		{
+            ScreenType = VideoScreenType.All;
             Items = new MvxObservableCollection<VideoCellViewModel>();
 		}
 
         public override void Prepare(VideoParameter parameter)
         {
             _owner = parameter.Owner;
-            IsSelecting = parameter.IsSelecting;
-            Title = _owner == null || IsSelecting ? "All video" : parameter.Owner?.Title;
+            if (_owner != null)
+                ScreenType = VideoScreenType.Custom;
+            if (parameter.IsSelecting)
+                ScreenType = VideoScreenType.Select;
+            Title = ScreenType == VideoScreenType.Custom ? parameter.Owner?.Title : "All video";
             Items = new MvxObservableCollection<VideoCellViewModel>();
         }
 
         public async override Task Initialize()
 		{
-            var videos = _owner == null || IsSelecting ?
-                await _databaseService.GetVideosAsync() :
-                await _databaseService.GetVideosAsync(_owner);
-            
+            var videos = ScreenType == VideoScreenType.Custom ?
+                await _databaseService.GetVideosAsync(_owner) :
+                await _databaseService.GetVideosAsync();
+                
             if (videos != null && videos.Any())
             {
                 foreach (var video in videos)
@@ -65,7 +70,7 @@ namespace Orbi.ViewModels
             }
 		}
 
-        public void AddVideos()
+        public void OpenVideosForSelect()
         {
             if (_owner == null)
                 return;
@@ -75,11 +80,23 @@ namespace Orbi.ViewModels
                 Owner = _owner
             });
         }
+
+        public void AddVideos()
+        {
+            throw new NotImplementedException();
+        }
 	}
 
     public class VideoParameter
     {
         public bool IsSelecting { get; set; }
         public Album Owner { get; set; }
+    }
+
+    public enum VideoScreenType
+    {
+        All,
+        Custom,
+        Select
     }
 }

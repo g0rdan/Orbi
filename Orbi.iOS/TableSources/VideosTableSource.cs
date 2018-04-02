@@ -29,5 +29,15 @@ namespace Orbi.iOS
 		{
             return AllVideosViewCell.CellHeight;
 		}
+
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+            
+		}
+
+		public override void RowDeselected(UITableView tableView, NSIndexPath indexPath)
+		{
+            
+		}
 	}
 }

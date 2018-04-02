@@ -3,7 +3,6 @@ using Android.App;
 using Android.OS;
 using Android.Views;
 using MvvmCross.Droid.Support.V7.AppCompat;
-using MvvmCross.Droid.Views.Attributes;
 using Orbi.ViewModels;
 
 namespace Orbi.Droid.Activities
@@ -32,7 +31,7 @@ namespace Orbi.Droid.Activities
         {
             base.OnOptionsItemSelected(item);
             if (item.ItemId == Resource.Id.add_album)
-                ViewModel.AddVideosCommand?.Execute();
+                ViewModel.OpenVideosForSelectCommand?.Execute();
 
             return false;
         }
