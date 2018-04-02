@@ -17,7 +17,6 @@ using Orbi.ViewModels;
 
 namespace Orbi.Droid.Activities
 {
-    //[Activity(Label = "AlbumsActivity")]
     [Activity]
     public class AlbumsActivity : MvxAppCompatActivity<AlbumsViewModel>
     {

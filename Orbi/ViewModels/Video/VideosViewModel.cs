@@ -15,9 +15,10 @@ namespace Orbi.ViewModels
         readonly IDatabaseService _databaseService;
         readonly IFileService _fileService;
 
-        public string Title { get; private set; } = "All video";
-        public bool IsSelecting { get; set; }
+        public string Title { get; private set; }
+        public bool IsSelecting { get; private set; }
         public MvxObservableCollection<VideoCellViewModel> Items { get; set; }
+        public IMvxCommand AddVideosCommand => new MvxCommand(AddVideos);
 
         public VideosViewModel(
             IDatabaseService databaseService, 
@@ -40,14 +41,14 @@ namespace Orbi.ViewModels
         public override void Prepare(VideoParameter parameter)
         {
             _owner = parameter.Owner;
-            Title = parameter.Owner?.Title;
             IsSelecting = parameter.IsSelecting;
+            Title = _owner == null || IsSelecting ? "All video" : parameter.Owner?.Title;
             Items = new MvxObservableCollection<VideoCellViewModel>();
         }
 
         public async override Task Initialize()
 		{
-            var videos = _owner == null ?
+            var videos = _owner == null || IsSelecting ?
                 await _databaseService.GetVideosAsync() :
                 await _databaseService.GetVideosAsync(_owner);
             
@@ -63,6 +64,17 @@ namespace Orbi.ViewModels
                 }
             }
 		}
+
+        public void AddVideos()
+        {
+            if (_owner == null)
+                return;
+
+            _navigationService.Navigate<VideosViewModel, VideoParameter>(new VideoParameter { 
+                IsSelecting = true,
+                Owner = _owner
+            });
+        }
 	}
 
     public class VideoParameter

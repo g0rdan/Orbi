@@ -12,6 +12,7 @@ namespace Orbi.iOS.Views
     [MvxChildPresentationAttribute]
     public class VideosView : MvxViewController<VideosViewModel>
     {
+        UIBarButtonItem _addBtn;
         UILabel _titleLabel;
         UITableView _videosTableView;
         VideosTableSource _source;
@@ -24,10 +25,14 @@ namespace Orbi.iOS.Views
 		{
             base.ViewDidLoad();
 
+            _addBtn = new UIBarButtonItem(UIBarButtonSystemItem.Add);
+            NavigationItem.RightBarButtonItem = _addBtn;
+
             InitTitleView();
             InitTable();
 
             var set = this.CreateBindingSet<VideosView, VideosViewModel>();
+            set.Bind(_addBtn).To(vm => vm.AddVideosCommand);
             set.Bind(_titleLabel).To(vm => vm.Title);
             set.Bind(_source).To(vm => vm.Items);
             set.Apply();
