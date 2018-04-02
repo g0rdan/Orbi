@@ -2,11 +2,13 @@
 using CoreGraphics;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
+using MvvmCross.iOS.Views.Presenters.Attributes;
 using Orbi.ViewModels;
 using UIKit;
 
 namespace Orbi.iOS.Views
 {
+    [MvxChildPresentationAttribute]
     public class AlbumsView : MvxViewController<AlbumsViewModel>
     {
         UILabel _titleLabel;
@@ -32,6 +34,7 @@ namespace Orbi.iOS.Views
             set.Bind(_titleLabel).To(vm => vm.Title);
             set.Bind(_addBtn).To(vm => vm.CreateAlbumCommand);
             set.Bind(_source).To(vm => vm.Albums);
+            set.Bind(_source).For(s => s.SelectionChangedCommand).To(vm => vm.OpenAlbumCommand);
             set.Apply();
         }
 

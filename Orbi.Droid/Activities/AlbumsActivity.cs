@@ -12,11 +12,13 @@ using Android.Views;
 using Android.Widget;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using MvvmCross.Droid.Views.Attributes;
 using Orbi.ViewModels;
 
 namespace Orbi.Droid.Activities
 {
-    [Activity(Label = "AlbumsActivity")]
+    //[Activity(Label = "AlbumsActivity")]
+    [Activity]
     public class AlbumsActivity : MvxAppCompatActivity<AlbumsViewModel>
     {
         protected override void OnCreate(Bundle savedInstanceState)

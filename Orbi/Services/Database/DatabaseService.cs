@@ -135,6 +135,18 @@ namespace Orbi.Services
             }
         }
 
+        public Album GetAlbum(string gUID)
+        {
+            try
+            {
+                return _connection.Get<Album>(gUID);
+            }
+            catch (SQLiteException)
+            {
+                return new Album();
+            }
+        }
+
         public List<Album> GetAlbums()
         {
             try

@@ -40,7 +40,7 @@ namespace Orbi.ViewModels
         public override void Prepare(VideoParameter parameter)
         {
             _owner = parameter.Owner;
-            Title = parameter.Owner.Title;
+            Title = parameter.Owner?.Title;
             IsSelecting = parameter.IsSelecting;
             Items = new MvxObservableCollection<VideoCellViewModel>();
         }

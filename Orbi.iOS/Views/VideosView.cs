@@ -2,12 +2,14 @@
 using CoreGraphics;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
+using MvvmCross.iOS.Views.Presenters.Attributes;
 using Orbi.iOS.TableSources;
 using Orbi.ViewModels;
 using UIKit;
 
 namespace Orbi.iOS.Views
 {
+    [MvxChildPresentationAttribute]
     public class VideosView : MvxViewController<VideosViewModel>
     {
         UILabel _titleLabel;

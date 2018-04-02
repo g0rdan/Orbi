@@ -21,11 +21,11 @@ namespace Orbi.ViewModels
         /// <summary>
         /// Obviously the command for deleting an exist album
         /// </summary>
-        public IMvxCommand<Album> DeleteAlbumCommand => new MvxCommand<Album>(DeleteAlbum);
+        public IMvxCommand<AlbumCellViewModel> DeleteAlbumCommand => new MvxCommand<AlbumCellViewModel>(DeleteAlbum);
         /// <summary>
         /// The command opens the list view model with videos inside
         /// </summary>
-        public IMvxCommand<Album> OpenAlbumCommand => new MvxCommand<Album>(OpenAlbum);
+        public IMvxCommand<AlbumCellViewModel> OpenAlbumCommand => new MvxCommand<AlbumCellViewModel>(OpenAlbum);
         /// <summary>
         /// Creating a new album in new view model
         /// </summary>
@@ -56,39 +56,39 @@ namespace Orbi.ViewModels
                         GUID = album.GUID,
                         Name = album.Title
                     };
-                    cell.DeleteAction = () => DeleteAlbum(album);
+                    cell.DeleteAction = () => DeleteAlbum(cell);
+                    cell.OpenAction = () => OpenAlbum(cell);
                     Albums.Add(cell);
                 }
             }
 		}
 
-		void OpenAlbum(Album album)
+        public void OpenAlbum(AlbumCellViewModel cellVM)
         {
-            _navigationService.Navigate<VideosViewModel, VideoParameter>(new VideoParameter {
+            var album = _databaseService.GetAlbum(cellVM.GUID);
+            _navigationService.Navigate<VideosViewModel, VideoParameter>(new VideoParameter
+            {
                 IsSelecting = false,
                 Owner = album
             });
         }
 
-        void DeleteAlbum(Album album)
+        public void DeleteAlbum(AlbumCellViewModel cellVM)
         {
+            var album = _databaseService.GetAlbum(cellVM.GUID);
             if (album != null)
-            {
                 _databaseService.DeleteAlbum(album);
-                var cellCandidate = Albums.FirstOrDefault(x => x.Name == album.Title);
-                if (cellCandidate != null)
-                    Albums.Remove(cellCandidate);
-            }
+
+            Albums.Remove(cellVM);
         }
 
         public void DeleteAlbum(int index)
         {
             var albumCellVM = Albums.ElementAt(index);
             if (albumCellVM != null)
-            {
                 _databaseService.DeleteAlbum(albumCellVM.GUID);
-                Albums.Remove(albumCellVM);
-            }
+            
+            Albums.Remove(albumCellVM);
         }
 
         async Task CreateAlbum()

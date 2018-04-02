@@ -20,6 +20,10 @@ namespace Orbi.Services
         /// </summary>
         void InitTables();
         /// <summary>
+        /// Gets only one album model by guid
+        /// </summary>
+        Album GetAlbum(string gUID);
+        /// <summary>
         /// Get albums from database
         /// </summary>
         /// <returns>The albums.</returns>
@@ -65,10 +69,10 @@ namespace Orbi.Services
         /// Adding video without specific album
         /// </summary>
         void AddVideo(Video video);
-        /// <summary>
-        /// Adding video to a specific album
-        /// </summary>
-        void AddVideo(Video video, Album album);
+		/// <summary>
+		/// Adding video to a specific album
+		/// </summary>
+		void AddVideo(Video video, Album album);
         /// <summary>
         /// Deleting video from database completely
         /// </summary>

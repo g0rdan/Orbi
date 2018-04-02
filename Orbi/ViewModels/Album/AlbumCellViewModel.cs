@@ -19,7 +19,9 @@ namespace Orbi.ViewModels
         }
 
         public Action DeleteAction { get; set; }
+        public Action OpenAction { get; set; }
 
         public IMvxCommand DeleteCommand => new MvxCommand(() => DeleteAction?.Invoke());
+        public IMvxCommand OpenCommand => new MvxCommand(() => OpenAction?.Invoke());
     }
 }

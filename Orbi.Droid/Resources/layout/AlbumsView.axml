@@ -4,10 +4,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@android:color/white">
     <MvxListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:MvxBind="ItemsSource Albums"
+        app:MvxBind="ItemsSource Albums; ItemClick OpenAlbumCommand"
         app:MvxItemTemplate="@layout/album_cell_view" />
 </LinearLayout>

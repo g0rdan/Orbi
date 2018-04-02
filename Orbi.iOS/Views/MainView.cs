@@ -2,11 +2,13 @@
 using CoreGraphics;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
+using MvvmCross.iOS.Views.Presenters.Attributes;
 using Orbi.ViewModels;
 using UIKit;
 
 namespace Orbi.iOS.Views
 {
+    [MvxRootPresentationAttribute(WrapInNavigationController = true)]
 	public class MainView : MvxViewController<MainViewModel>
     {
         UIButton _allVideosBtn;
