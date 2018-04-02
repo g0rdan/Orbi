@@ -57,6 +57,11 @@ namespace Orbi.Services
         /// </summary>
         void DeleteAlbum(Album album);
         /// <summary>
+        /// Deleting album from database by GUID
+        /// It won't delete videos in that album
+        /// </summary>
+        void DeleteAlbum(string guid);
+        /// <summary>
         /// Adding video without specific album
         /// </summary>
         void AddVideo(Video video);

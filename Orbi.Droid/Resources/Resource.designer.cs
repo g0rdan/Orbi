@@ -5241,7 +5241,10 @@ namespace Orbi.Droid
 			public const int ic_add_white = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Icon = 2130903041;
+			public const int ic_delete_black = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int Icon = 2130903042;
 			
 			static Mipmap()
 			{

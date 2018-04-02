@@ -26,6 +26,7 @@ namespace Orbi.iOS.Views
             _albumsTableView = new UITableView(View.Frame);
             _albumsTableView.TableFooterView = new UIView();
             var tableSource = new AlbumsTableSource(_albumsTableView, AlbumViewCell.Key, AlbumViewCell.Key);
+            tableSource.DeleteAlbumAction = DeleteAlbum;
             _albumsTableView.Source = tableSource;
             View.AddSubview(_albumsTableView);
 
@@ -35,10 +36,15 @@ namespace Orbi.iOS.Views
             set.Apply();
         }
 
-		public override void DidRotate(UIInterfaceOrientation fromInterfaceOrientation)
+        public override void DidRotate(UIInterfaceOrientation fromInterfaceOrientation)
 		{
             base.DidRotate(fromInterfaceOrientation);
             _albumsTableView.Frame = new CGRect(CGPoint.Empty, View.Frame.Size);
 		}
+
+        void DeleteAlbum(int index)
+        {
+            ViewModel.DeleteAlbum(index);
+        }
 	}
 }

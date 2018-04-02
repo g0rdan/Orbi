@@ -5,6 +5,8 @@ namespace Orbi.ViewModels
 {
     public class AlbumCellViewModel : MvxViewModel
     {
+        public string GUID { get; set; }
+
         string _name;
         public string Name 
         { 
@@ -16,8 +18,8 @@ namespace Orbi.ViewModels
             }
         }
 
-        public AlbumCellViewModel()
-        {
-        }
+        public Action DeleteAction { get; set; }
+
+        public IMvxCommand DeleteCommand => new MvxCommand(() => DeleteAction?.Invoke());
     }
 }

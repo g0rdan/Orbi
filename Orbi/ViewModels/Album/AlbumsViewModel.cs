@@ -50,10 +50,13 @@ namespace Orbi.ViewModels
             {
                 foreach (var album in albums)
                 {
-                    Albums.Add(new AlbumCellViewModel
+                    var cell = new AlbumCellViewModel
                     {
+                        GUID = album.GUID,
                         Name = album.Title
-                    });
+                    };
+                    cell.DeleteAction = () => DeleteAlbum(album);
+                    Albums.Add(cell);
                 }
             }
 		}
@@ -71,6 +74,16 @@ namespace Orbi.ViewModels
                 var cellCandidate = Albums.FirstOrDefault(x => x.Name == album.Title);
                 if (cellCandidate != null)
                     Albums.Remove(cellCandidate);
+            }
+        }
+
+        public void DeleteAlbum(int index)
+        {
+            var albumCellVM = Albums.ElementAt(index);
+            if (albumCellVM != null)
+            {
+                _databaseService.DeleteAlbum(albumCellVM.GUID);
+                Albums.Remove(albumCellVM);
             }
         }
 

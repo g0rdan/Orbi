@@ -82,6 +82,28 @@ namespace Orbi.Services
             try
             {
                 _connection?.Delete(album);
+                var relaitedItems = _connection.Query<AlbumVideo>($"SELECT * FROM AlbumVideo WHERE Album_GUID = '{album.GUID}'");
+                if (relaitedItems != null && relaitedItems.Any())
+                {
+                    foreach (var item in relaitedItems)
+                    {
+                        _connection.Delete(item);
+                    }
+                }
+            }
+            catch (SQLiteException)
+            {
+
+            }
+        }
+
+        public void DeleteAlbum(string guid)
+        {
+            try
+            {
+                var albumModel = _connection.Get<Album>(guid);
+                if (albumModel != null)
+                    DeleteAlbum(albumModel);
             }
             catch (SQLiteException)
             {

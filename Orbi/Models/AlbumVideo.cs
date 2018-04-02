@@ -15,6 +15,10 @@ namespace Orbi.Models
         [ForeignKey(typeof(Video))]
         public string Video_GUID { get; set; }
 
+        public AlbumVideo()
+        {
+        }
+
         public AlbumVideo(string album_guid, string video_guid)
         {
             Album_GUID = album_guid;
