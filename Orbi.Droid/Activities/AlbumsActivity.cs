@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using Orbi.ViewModels;
 
@@ -24,5 +25,20 @@ namespace Orbi.Droid.Activities
             // Create your application here
             SetContentView(Resource.Layout.AlbumsView);
         }
-    }
+
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+            MenuInflater.Inflate(Resource.Menu.albums_menu, menu);
+            return base.OnCreateOptionsMenu(menu);
+		}
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+            base.OnOptionsItemSelected(item);
+            if (item.ItemId == Resource.Id.add_album)
+                ViewModel.CreateAlbumCommand?.ExecuteAsync();
+
+            return false;
+		}
+	}
 }

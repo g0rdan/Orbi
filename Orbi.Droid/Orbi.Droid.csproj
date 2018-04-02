@@ -179,12 +179,19 @@
     <AndroidResource Include="Resources\layout\AlbumsView.axml" />
     <AndroidResource Include="Resources\layout\video_cell_view.axml" />
     <AndroidResource Include="Resources\values\Dimens.xml" />
+    <AndroidResource Include="Resources\menu\albums_menu.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_add_white.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Services\" />
     <Folder Include="Activities\" />
     <Folder Include="Converters\" />
+    <Folder Include="Resources\menu\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">

@@ -4489,6 +4489,9 @@ namespace Orbi.Droid
 			// aapt resource value: 0x7f090029
 			public const int add = 2131296297;
 			
+			// aapt resource value: 0x7f0900b5
+			public const int add_album = 2131296437;
+			
 			// aapt resource value: 0x7f090072
 			public const int alertTitle = 2131296370;
 			
@@ -5212,11 +5215,30 @@ namespace Orbi.Droid
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0f0000
+			public const int albums_menu = 2131689472;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
 		public partial class Mipmap
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Icon = 2130903040;
+			public const int ic_add_white = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Icon = 2130903041;
 			
 			static Mipmap()
 			{
