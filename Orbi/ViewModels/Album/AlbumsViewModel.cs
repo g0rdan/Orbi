@@ -63,7 +63,10 @@ namespace Orbi.ViewModels
 
 		void OpenAlbum(Album album)
         {
-            _navigationService.Navigate<VideosViewModel, Album>(album);
+            _navigationService.Navigate<VideosViewModel, VideoParameter>(new VideoParameter {
+                IsSelecting = false,
+                Owner = album
+            });
         }
 
         void DeleteAlbum(Album album)

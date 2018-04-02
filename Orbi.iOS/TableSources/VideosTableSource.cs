@@ -6,9 +6,9 @@ using UIKit;
 
 namespace Orbi.iOS
 {
-    public class AllVideosTableSource : MvxSimpleTableViewSource
+    public class VideosTableSource : MvxSimpleTableViewSource
     {
-        public AllVideosTableSource(UITableView tableView, string nibName, string cellIdentifier)
+        public VideosTableSource(UITableView tableView, string nibName, string cellIdentifier)
             : base(tableView, nibName, cellIdentifier)
         {
         }

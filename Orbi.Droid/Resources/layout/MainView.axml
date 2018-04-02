@@ -13,14 +13,14 @@
             app:MvxBind="Click OpenAllVideosCommand"
             android:layout_margin="10dp"
             android:layout_gravity="center"
-            android:text="Все видео"
+            android:text="@string/all_videos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
             app:MvxBind="Click OpenAlbumsCommand"
             android:layout_margin="10dp"
             android:layout_gravity="center"
-            android:text="Альбомы"
+            android:text="@@string/albums"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

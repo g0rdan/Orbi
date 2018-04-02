@@ -6,10 +6,10 @@ using Orbi.ViewModels;
 
 namespace Orbi.Droid.Activities
 {
-    [Activity(Label = "AllVideosActivity")]
-    public class AllVideosActivity : MvxAppCompatActivity<AllVideosViewModel>
+    [Activity(Label = "VideosActivity")]
+    public class VideosActivity : MvxAppCompatActivity<VideosViewModel>
     {
-        public AllVideosActivity()
+        public VideosActivity()
         {
         }
 
@@ -17,7 +17,7 @@ namespace Orbi.Droid.Activities
         {
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.AllVideosView);
+            SetContentView(Resource.Layout.VideosView);
         }
     }
 }

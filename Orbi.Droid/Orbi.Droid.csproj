@@ -157,7 +157,7 @@
     <Compile Include="Setup.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Activities\MainActivity.cs" />
-    <Compile Include="Activities\AllVideosActivity.cs" />
+    <Compile Include="Activities\VideosActivity.cs" />
     <Compile Include="Activities\AlbumsActivity.cs" />
     <Compile Include="Converters\ImageConverter.cs" />
   </ItemGroup>
@@ -175,7 +175,7 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\MainView.axml" />
-    <AndroidResource Include="Resources\layout\AllVideosView.axml" />
+    <AndroidResource Include="Resources\layout\VideosView.axml" />
     <AndroidResource Include="Resources\layout\AlbumsView.axml" />
     <AndroidResource Include="Resources\layout\video_cell_view.axml" />
     <AndroidResource Include="Resources\values\Dimens.xml" />

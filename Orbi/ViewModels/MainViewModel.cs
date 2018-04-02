@@ -18,7 +18,7 @@ namespace Orbi.ViewModels
 
         void OpenAllVideos()
         {
-            _navigationService.Navigate<AllVideosViewModel>();
+            _navigationService.Navigate<VideosViewModel>();
         }
 
         void OpenAlbums()

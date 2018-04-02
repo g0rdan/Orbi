@@ -32,10 +32,10 @@ namespace Orbi.iOS.Views
         void InitViews()
         {
             _allVideosBtn = new UIButton(UIButtonType.System);
-            _allVideosBtn.SetTitle("Все видео", UIControlState.Normal);
+            _allVideosBtn.SetTitle("All video", UIControlState.Normal);
             _allVideosBtn.SizeToFit();
             _albumsBtn = new UIButton(UIButtonType.System);
-            _albumsBtn.SetTitle("Альбомы", UIControlState.Normal);
+            _albumsBtn.SetTitle("Albums", UIControlState.Normal);
             _albumsBtn.SizeToFit();
 
             _allVideosBtn.Frame = new CGRect(new CGPoint((View.Frame.Width / 2 - _allVideosBtn.Frame.Width / 2), (View.Frame.Height / 2 - _allVideosBtn.Frame.Height / 2)), _allVideosBtn.Frame.Size);
