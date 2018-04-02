@@ -14,6 +14,7 @@ namespace Orbi.ViewModels
         readonly IDatabaseService _databaseService;
         readonly IDialogService _dialogService;
 
+        public string Title => "Albums";
         public MvxObservableCollection<AlbumCellViewModel> Albums { get; set; }
 
         #region Commands

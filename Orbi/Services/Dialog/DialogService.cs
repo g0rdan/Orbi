@@ -13,7 +13,7 @@ namespace Orbi.Services
         public async Task<(bool IsOk, string Title)> AskToAddAlbum()
         {
             var config = new PromptConfig()
-                .SetTitle("Название альбома")
+                .SetTitle("Album's name")
                 .SetInputMode(InputType.Default);
 
             var result = await UserDialogs.Instance.PromptAsync(config);
