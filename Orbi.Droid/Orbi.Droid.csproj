@@ -185,6 +185,7 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_add_white.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_add_white.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_add_white.png" />
+    <AndroidResource Include="Resources\layout\album_cell_view.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
