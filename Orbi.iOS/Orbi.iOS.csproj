@@ -157,6 +157,7 @@
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="TableSources\AllVideosViewCell.xib" />
+    <InterfaceDefinition Include="TableSources\AlbumViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -182,6 +183,11 @@
       <DependentUpon>AllVideosViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Converters\ImageConverter.cs" />
+    <Compile Include="TableSources\AlbumsTableSource.cs" />
+    <Compile Include="TableSources\AlbumViewCell.cs" />
+    <Compile Include="TableSources\AlbumViewCell.designer.cs">
+      <DependentUpon>AlbumViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">

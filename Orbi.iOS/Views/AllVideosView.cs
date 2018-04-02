@@ -1,4 +1,5 @@
 ﻿using System;
+using CoreGraphics;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
 using Orbi.iOS.TableSources;
@@ -18,20 +19,22 @@ namespace Orbi.iOS.Views
 		public override void ViewDidLoad()
 		{
             base.ViewDidLoad();
-            View.BackgroundColor = UIColor.Green;
 
             _videosTableView = new UITableView(View.Frame);
             _videosTableView.TableFooterView = new UIView();
-            //_videosTableView.RowHeight = UITableView.AutomaticDimension;
-            //FirstTableView.EstimatedRowHeight = 140;
             var tableSource = new AllVideosTableSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
             _videosTableView.Source = tableSource;
-
             View.AddSubview(_videosTableView);
 
             var set = this.CreateBindingSet<AllVideosView, AllVideosViewModel>();
             set.Bind(tableSource).To(vm => vm.Items);
             set.Apply();
 		}
+
+        public override void DidRotate(UIInterfaceOrientation fromInterfaceOrientation)
+        {
+            base.DidRotate(fromInterfaceOrientation);
+            _videosTableView.Frame = new CGRect(CGPoint.Empty, View.Frame.Size);
+        }
 	}
 }
