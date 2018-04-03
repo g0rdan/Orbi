@@ -81,7 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="DatabaseTests.cs" />
+    <Compile Include="VideosViewModelTests.cs" />
+    <Compile Include="AlbumsViewModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -91,6 +93,12 @@
       <Project>{84E48EA7-F917-48B5-A0AF-236B1B94DC64}</Project>
       <Name>Orbi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\data.sqlite" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.10\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.10\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />
