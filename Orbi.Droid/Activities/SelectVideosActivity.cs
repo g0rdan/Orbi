@@ -1,19 +1,17 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using MvvmCross.Binding.Droid.Views;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using MvvmCross.Platform;
+using MvvmCross.Plugins.Messenger;
+using Orbi.Messages;
 using Orbi.ViewModels;
-using static Android.Widget.AbsListView;
 using static Android.Widget.AdapterView;
 
 namespace Orbi.Droid.Activities
@@ -21,7 +19,9 @@ namespace Orbi.Droid.Activities
     [Activity]
     public class SelectVideosActivity : MvxAppCompatActivity<SelectVideosViewModel>
     {
+        IMenuItem _doneBtn;
         MvxListView _listView;
+        MvxSubscriptionToken _donBtnSubsToken;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,9 +35,23 @@ namespace Orbi.Droid.Activities
             _listView.OnItemClickListener = listener;
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+		protected override void OnResume()
+		{
+            base.OnResume();
+            _donBtnSubsToken = Mvx.Resolve<IMvxMessenger>().SubscribeOnMainThread<DoneBtnMessage>(ReceivedMessage);
+		}
+
+		protected override void OnPause()
+		{
+            base.OnPause();
+            Mvx.Resolve<IMvxMessenger>().Unsubscribe<DoneBtnMessage>(_donBtnSubsToken);
+		}
+
+		public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.right_menu, menu);
+            _doneBtn = menu.GetItem(1);
+            DisableDoneBtn();
             menu.RemoveItem(Resource.Id.add);
             return base.OnCreateOptionsMenu(menu);
         }
@@ -59,6 +73,30 @@ namespace Orbi.Droid.Activities
         void ItemDeselected(int index)
         {
             ViewModel.RemoveSelectedItem(index);
+        }
+
+        void ReceivedMessage(DoneBtnMessage message)
+        {
+            if (message.Enabled)
+            {
+                EnableDoneBtn();
+            }
+            else
+            {
+                DisableDoneBtn();
+            }
+        }
+
+        void EnableDoneBtn()
+        {
+            _doneBtn.SetEnabled(true);
+            _doneBtn.Icon.SetAlpha(255);
+        }
+
+        void DisableDoneBtn()
+        {
+            _doneBtn.SetEnabled(false);
+            _doneBtn.Icon.SetAlpha(130);
         }
     }
 

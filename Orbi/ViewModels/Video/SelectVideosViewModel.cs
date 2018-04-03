@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using MvvmCross.Core.Navigation;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.Messenger;
+using Orbi.Messages;
 using Orbi.Models;
 using Orbi.Services;
 
@@ -10,13 +12,20 @@ namespace Orbi.ViewModels
 {
     public class SelectVideosViewModel : VideosViewModel
     {
+        readonly IMvxMessenger _messenger;
+
         Album _owner;
         bool _doneBtnEnabled;
 
         public bool DoneBtnEnabled
         {
             get { return _doneBtnEnabled; }
-            set { SetProperty(ref _doneBtnEnabled, value); }
+            set 
+            { 
+                SetProperty(ref _doneBtnEnabled, value);
+                // in case when we can't use bindings
+                _messenger.Publish(new DoneBtnMessage(this, value));
+            }
         }
 
         public IMvxCommand AddVideosCommand => new MvxCommand(AddVideos);
@@ -25,9 +34,11 @@ namespace Orbi.ViewModels
         public SelectVideosViewModel(
             IDatabaseService databaseService,
             IFileService fileService,
-            IMvxNavigationService navigationService)
+            IMvxNavigationService navigationService,
+            IMvxMessenger messenger)
             : base(databaseService, fileService, navigationService)
         {
+            _messenger = messenger;
         }
 
 		public override void Prepare()
