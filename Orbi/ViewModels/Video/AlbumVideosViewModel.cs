@@ -35,7 +35,21 @@ namespace Orbi.ViewModels
                 return;
 
             var videos = await _databaseService.GetVideosAsync(_owner);
-            FillItems(videos);
+            if (videos != null && videos.Any())
+            {
+                foreach (var video in videos)
+                {
+                    var cell = new VideoCellViewModel
+                    {
+                        GUID = video.GUID,
+                        Title = video.Name,
+                        Data = _fileService.GetVideoFile(video.FileName)
+                    };
+
+                    cell.DeleteAction = () => DeleteVideo(cell);
+                    Items.Add(cell);
+                }
+            }
         }
 
         public async Task OpenVideosForSelect()
@@ -59,11 +73,16 @@ namespace Orbi.ViewModels
 		public void DeleteVideo(int index)
 		{
             var cell = Items.ElementAt(index);
+            DeleteVideo(cell);
+		}
+
+        public void DeleteVideo(VideoCellViewModel cell)
+        {
             if (cell != null)
             {
                 _databaseService.DeleteVideo(cell.GUID, _owner.GUID);
                 Items.Remove(cell);
             }
-		}
+        }
 	}
 }

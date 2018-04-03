@@ -9,6 +9,9 @@ namespace Orbi.ViewModels
         public string Title { get; set; }
         public byte[] Data { get; set; }
 
+        public Action DeleteAction { get; set; }
+        public IMvxCommand DeleteCommand => new MvxCommand(() => DeleteAction?.Invoke());
+
         public VideoCellViewModel()
         {
         }

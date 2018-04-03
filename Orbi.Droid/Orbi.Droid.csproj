@@ -204,6 +204,8 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_done_white.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_done_white.png" />
     <AndroidResource Include="Resources\layout\SelectVideosView.axml" />
+    <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\layout\album_video_cell_view.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

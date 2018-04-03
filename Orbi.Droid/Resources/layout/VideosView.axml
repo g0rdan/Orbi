@@ -9,5 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:MvxBind="ItemsSource Items"
-        app:MvxItemTemplate="@layout/video_cell_view" />
+        app:MvxItemTemplate="@layout/video_cell_view"
+        android:divider="@color/divider_color"
+        android:dividerHeight="@dimen/divider_height" />
 </LinearLayout>

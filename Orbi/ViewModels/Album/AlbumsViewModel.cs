@@ -97,10 +97,14 @@ namespace Orbi.ViewModels
             {
                 var newAlbum = new Album { Title = result.Title };
                 _databaseService.AddAlbum(newAlbum);
-                Albums.Add(new AlbumCellViewModel { 
-                    GUID = newAlbum.GUID, 
-                    Name = newAlbum.Title 
-                });
+                var cell = new AlbumCellViewModel
+                {
+                    GUID = newAlbum.GUID,
+                    Name = newAlbum.Title
+                };
+                cell.DeleteAction = () => DeleteAlbum(cell);
+                cell.OpenAction = () => OpenAlbum(cell);
+                Albums.Add(cell);
             }
         }
     }

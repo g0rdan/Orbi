@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <dimen name="video_cell_size">200dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
 </resources>
