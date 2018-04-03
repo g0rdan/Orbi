@@ -79,11 +79,27 @@
     <Reference Include="SQLiteNetExtensions">
       <HintPath>..\packages\SQLiteNetExtensions.2.0.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\SQLiteNetExtensions.dll</HintPath>
     </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.2.0.0\lib\Net45\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\packages\Acr.UserDialogs.6.5.1\lib\netstandard1.1\Acr.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\packages\Acr.UserDialogs.6.5.1\lib\netstandard1.1\Acr.UserDialogs.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.7.0\lib\net45\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseTests.cs" />
-    <Compile Include="VideosViewModelTests.cs" />
-    <Compile Include="AlbumsViewModelTests.cs" />
+    <Compile Include="ServiceTests\DatabaseServiceTests.cs" />
+    <Compile Include="ServiceTests\DialogServiceTests.cs" />
+    <Compile Include="ViewModelTests\AlbumsViewModelTests.cs" />
+    <Compile Include="ViewModelTests\VideosViewModelTests.cs" />
+    <Compile Include="ViewModelTests\AlbumVideosViewModelTests.cs" />
+    <Compile Include="ViewModelTests\SelectVideoViewModelTests.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -96,6 +112,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="ViewModelTests\" />
+    <Folder Include="ServiceTests\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\data.sqlite" />
