@@ -18,6 +18,7 @@ namespace Orbi.Droid.Activities
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.AlbumVideosView);
+            Title = ViewModel.Title;
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

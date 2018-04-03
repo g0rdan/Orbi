@@ -33,6 +33,7 @@ namespace Orbi.Droid.Activities
             listener.ItemSelected = ItemSelected;
             listener.ItemDeselected = ItemDeselected;
             _listView.OnItemClickListener = listener;
+            Title = ViewModel.Title;
         }
 
 		protected override void OnResume()
