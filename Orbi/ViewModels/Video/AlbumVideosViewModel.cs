@@ -55,5 +55,15 @@ namespace Orbi.ViewModels
                 await Initialize();
             }
         }
+
+		public void DeleteVideo(int index)
+		{
+            var cell = Items.ElementAt(index);
+            if (cell != null)
+            {
+                _databaseService.DeleteVideo(cell.GUID, _owner.GUID);
+                Items.Remove(cell);
+            }
+		}
 	}
 }

@@ -85,5 +85,6 @@ namespace Orbi.Services
         /// Deleting video from a specific album in database.
         /// </summary>
         void DeleteVideo(Video video, Album album);
+        void DeleteVideo(string videoGuid, string albumGuid);
     }
 }

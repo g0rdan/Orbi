@@ -190,6 +190,7 @@
     </Compile>
     <Compile Include="Views\AlbumVideosView.cs" />
     <Compile Include="Views\SelectVideosView.cs" />
+    <Compile Include="TableSources\AlbumVideosTableViewSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">

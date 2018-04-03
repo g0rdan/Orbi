@@ -10,9 +10,11 @@ namespace Orbi.Models
     [Table("AlbumVideo")]
     public class AlbumVideo
     {
-        [ForeignKey(typeof(Album))]
+        [PrimaryKey, AutoIncrement]
+        public int Index { get; set; }
+        [ForeignKey(typeof(Album)), Indexed]
         public string Album_GUID { get; set; }
-        [ForeignKey(typeof(Video))]
+        [ForeignKey(typeof(Video)), Indexed]
         public string Video_GUID { get; set; }
 
         public AlbumVideo()

@@ -148,6 +148,20 @@ namespace Orbi.Services
             }
         }
 
+        public void DeleteVideo(string videoGuid, string albumGuid)
+        {
+            try
+            {
+                var query = $"SELECT * FROM {nameof(AlbumVideo)} WHERE {nameof(AlbumVideo.Album_GUID)} = '{albumGuid}' AND {nameof(AlbumVideo.Video_GUID)} = '{videoGuid}'";
+                var id = _connection?.Query<AlbumVideo>(query).FirstOrDefault()?.Index ?? 0;
+                _connection?.Delete<AlbumVideo>(id);
+            }
+            catch (SQLiteException)
+            {
+
+            }
+        }
+
         public Album GetAlbum(string gUID)
         {
             try
@@ -188,7 +202,7 @@ namespace Orbi.Services
         {
             try
             {
-                var query = "SELECT * " +
+                var query = "SELECT v.GUID, v.FileName, v.Name " +
                             "FROM Video as v " +
                             "INNER JOIN AlbumVideo as av " +
                                 "ON v.GUID = av.Video_GUID " +
