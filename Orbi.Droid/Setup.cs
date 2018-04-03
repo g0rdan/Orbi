@@ -1,6 +1,7 @@
 using Android.Content;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
 using MvvmCross.Platform.Converters;
 using MvvmCross.Platform.Platform;
@@ -38,5 +39,10 @@ namespace Orbi.Droid
             base.InitializeFirstChance();
             Mvx.RegisterSingleton<IFileService>(new FileService());
 		}
+
+        protected override IMvxAndroidViewPresenter CreateViewPresenter()
+        {
+            return new MvxAndroidViewPresenter(AndroidViewAssemblies);
+        }
 	}
 }

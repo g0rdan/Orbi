@@ -4582,8 +4582,8 @@ namespace Orbi.Droid
 			// aapt resource value: 0x7f090022
 			public const int disableHome = 2131296290;
 			
-			// aapt resource value: 0x7f0900b5
-			public const int done = 2131296437;
+			// aapt resource value: 0x7f0900b6
+			public const int done = 2131296438;
 			
 			// aapt resource value: 0x7f090080
 			public const int edit_query = 2131296384;
@@ -4681,14 +4681,14 @@ namespace Orbi.Droid
 			// aapt resource value: 0x7f09009e
 			public const int loadingProgressWheel = 2131296414;
 			
-			// aapt resource value: 0x7f0900b4
-			public const int masked = 2131296436;
+			// aapt resource value: 0x7f0900b5
+			public const int masked = 2131296437;
 			
 			// aapt resource value: 0x7f0900a5
 			public const int media_actions = 2131296421;
 			
-			// aapt resource value: 0x7f0900b2
-			public const int message = 2131296434;
+			// aapt resource value: 0x7f0900b3
+			public const int message = 2131296435;
 			
 			// aapt resource value: 0x7f090033
 			public const int middle = 2131296307;
@@ -4809,6 +4809,9 @@ namespace Orbi.Droid
 			
 			// aapt resource value: 0x7f09008c
 			public const int select_dialog_listview = 2131296396;
+			
+			// aapt resource value: 0x7f0900b2
+			public const int select_listview = 2131296434;
 			
 			// aapt resource value: 0x7f090076
 			public const int shortcut = 2131296374;
@@ -4939,8 +4942,8 @@ namespace Orbi.Droid
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900b3
-			public const int visible = 2131296435;
+			// aapt resource value: 0x7f0900b4
+			public const int visible = 2131296436;
 			
 			// aapt resource value: 0x7f09003e
 			public const int withText = 2131296318;
@@ -5200,16 +5203,19 @@ namespace Orbi.Droid
 			public const int select_dialog_singlechoice_material = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int support_simple_spinner_dropdown_item = 2130968641;
+			public const int SelectVideosView = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int tooltip = 2130968642;
+			public const int support_simple_spinner_dropdown_item = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int video_cell_view = 2130968643;
+			public const int tooltip = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int VideosView = 2130968644;
+			public const int video_cell_view = 2130968644;
+			
+			// aapt resource value: 0x7f040045
+			public const int VideosView = 2130968645;
 			
 			static Layout()
 			{
