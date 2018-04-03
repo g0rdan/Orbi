@@ -43,6 +43,8 @@
     <Compile Include="ViewModels\Video\VideoCellViewModel.cs" />
     <Compile Include="Services\Dialog\IDialogService.cs" />
     <Compile Include="Services\Dialog\DialogService.cs" />
+    <Compile Include="ViewModels\Video\AlbumVideosViewModel.cs" />
+    <Compile Include="ViewModels\Video\SelectVideosViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">

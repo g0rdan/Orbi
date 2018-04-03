@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using CoreGraphics;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
@@ -11,28 +10,33 @@ using UIKit;
 namespace Orbi.iOS.Views
 {
     [MvxChildPresentation]
-    public class VideosView : MvxViewController<VideosViewModel>
+    public class AlbumVideosView : MvxViewController<AlbumVideosViewModel>
     {
+        UIBarButtonItem _addBtn;
         UILabel _titleLabel;
         UITableView _videosTableView;
         VideosTableSource _source;
 
-        public VideosView()
+        public AlbumVideosView()
         {
         }
 
-		public override void ViewDidLoad()
-		{
+        public override void ViewDidLoad()
+        {
             base.ViewDidLoad();
+
+            _addBtn = new UIBarButtonItem(UIBarButtonSystemItem.Add);
+            NavigationItem.RightBarButtonItem = _addBtn;
 
             InitTitleView();
             InitTable();
 
-            var set = this.CreateBindingSet<VideosView, VideosViewModel>();
+            var set = this.CreateBindingSet<AlbumVideosView, AlbumVideosViewModel>();
+            set.Bind(_addBtn).To(vm => vm.OpenVideosForSelectCommand);
             set.Bind(_titleLabel).To(vm => vm.Title);
             set.Bind(_source).To(vm => vm.Items);
             set.Apply();
-		}
+        }
 
         public override void DidRotate(UIInterfaceOrientation fromInterfaceOrientation)
         {
@@ -55,8 +59,10 @@ namespace Orbi.iOS.Views
             _videosTableView = new UITableView(View.Frame);
             _videosTableView.TableFooterView = new UIView();
             _source = new VideosTableSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
+            //_source.SelectedItemAction = ItemSelected;
+            //_source.DeselecetdItemAction = ItemDeselected;
             _videosTableView.Source = _source;
             View.AddSubview(_videosTableView);
         }
-	}
+    }
 }

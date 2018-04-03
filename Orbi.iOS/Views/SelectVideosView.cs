@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using CoreGraphics;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.iOS.Views;
@@ -11,13 +10,14 @@ using UIKit;
 namespace Orbi.iOS.Views
 {
     [MvxChildPresentation]
-    public class VideosView : MvxViewController<VideosViewModel>
+    public class SelectVideosView : MvxViewController<SelectVideosViewModel>
     {
+        UIBarButtonItem _doneBtn;
         UILabel _titleLabel;
         UITableView _videosTableView;
         VideosTableSource _source;
 
-        public VideosView()
+        public SelectVideosView()
         {
         }
 
@@ -25,10 +25,15 @@ namespace Orbi.iOS.Views
 		{
             base.ViewDidLoad();
 
+            _doneBtn = new UIBarButtonItem(UIBarButtonSystemItem.Done);
+            NavigationItem.RightBarButtonItem = _doneBtn;
+
             InitTitleView();
             InitTable();
 
-            var set = this.CreateBindingSet<VideosView, VideosViewModel>();
+            var set = this.CreateBindingSet<SelectVideosView, SelectVideosViewModel>();
+            set.Bind(_doneBtn).To(vm => vm.AddVideosCommand);
+            set.Bind(_doneBtn).For("Enabled").To(vm => vm.DoneBtnEnabled);
             set.Bind(_titleLabel).To(vm => vm.Title);
             set.Bind(_source).To(vm => vm.Items);
             set.Apply();
@@ -55,8 +60,21 @@ namespace Orbi.iOS.Views
             _videosTableView = new UITableView(View.Frame);
             _videosTableView.TableFooterView = new UIView();
             _source = new VideosTableSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
+            _source.SelectedItemAction = ItemSelected;
+            _source.DeselecetdItemAction = ItemDeselected;
             _videosTableView.Source = _source;
+            _videosTableView.AllowsMultipleSelection = true;
             View.AddSubview(_videosTableView);
+        }
+
+        void ItemSelected(int index)
+        {
+            ViewModel.AddSelectedItem(index);
+        }
+
+        void ItemDeselected(int index)
+        {
+            ViewModel.RemoveSelectedItem(index);
         }
 	}
 }

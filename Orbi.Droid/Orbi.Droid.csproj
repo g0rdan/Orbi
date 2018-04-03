@@ -160,6 +160,8 @@
     <Compile Include="Activities\VideosActivity.cs" />
     <Compile Include="Activities\AlbumsActivity.cs" />
     <Compile Include="Converters\ImageConverter.cs" />
+    <Compile Include="Activities\AlbumVideosActivity.cs" />
+    <Compile Include="Activities\SelectVideosActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -179,7 +181,7 @@
     <AndroidResource Include="Resources\layout\AlbumsView.axml" />
     <AndroidResource Include="Resources\layout\video_cell_view.axml" />
     <AndroidResource Include="Resources\values\Dimens.xml" />
-    <AndroidResource Include="Resources\menu\albums_menu.xml" />
+    <AndroidResource Include="Resources\menu\right_menu.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_add_white.png" />
     <AndroidResource Include="Resources\mipmap-mdpi\ic_add_white.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_add_white.png" />
@@ -191,6 +193,12 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_delete_black.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_delete_black.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_delete_black.png" />
+    <AndroidResource Include="Resources\layout\AlbumVideosView.axml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_done_white.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_done_white.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_done_white.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_done_white.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_done_white.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

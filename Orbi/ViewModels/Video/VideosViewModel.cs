@@ -11,23 +11,12 @@ namespace Orbi.ViewModels
 {
     public class VideosViewModel : MvxViewModel<VideoParameter, VideoAddingCallback>
     {
-        Album _owner;
-        readonly IMvxNavigationService _navigationService;
-        readonly IDatabaseService _databaseService;
-        readonly IFileService _fileService;
+        protected readonly IMvxNavigationService _navigationService;
+        protected readonly IDatabaseService _databaseService;
+        protected readonly IFileService _fileService;
 
-        bool _doneBtnEnabled;
-        public bool DoneBtnEnabled
-        {
-            get { return _doneBtnEnabled; }
-            set { SetProperty(ref _doneBtnEnabled, value); }
-        }
-        public string Title { get; private set; }
-        public VideoScreenType ScreenType { get; set; }
+        public string Title { get; protected set; } = "All video";
         public MvxObservableCollection<VideoCellViewModel> Items { get; set; }
-        public List<VideoCellViewModel> SelectedItems { get; set; } = new List<VideoCellViewModel>();
-        public IMvxAsyncCommand OpenVideosForSelectCommand => new MvxAsyncCommand(OpenVideosForSelect);
-        public IMvxCommand AddVideosCommand => new MvxCommand(AddVideos);
 
         public VideosViewModel(
             IDatabaseService databaseService,
@@ -44,27 +33,22 @@ namespace Orbi.ViewModels
         // watch all videos
         public override void Prepare()
         {
-            ScreenType = VideoScreenType.All;
             Items = new MvxObservableCollection<VideoCellViewModel>();
         }
 
         public override void Prepare(VideoParameter parameter)
         {
-            _owner = parameter.Owner;
-            if (_owner != null)
-                ScreenType = VideoScreenType.Custom;
-            if (parameter.IsSelecting)
-                ScreenType = VideoScreenType.Select;
-            Title = ScreenType == VideoScreenType.Custom ? parameter.Owner?.Title : "All video";
-            Items = new MvxObservableCollection<VideoCellViewModel>();
+            throw new NotImplementedException();
         }
 
         public async override Task Initialize()
         {
-            var videos = ScreenType == VideoScreenType.Custom ?
-                await _databaseService.GetVideosAsync(_owner) :
-                await _databaseService.GetVideosAsync();
+            var videos = await _databaseService.GetVideosAsync();
+            FillItems(videos);
+        }
 
+        protected void FillItems(IEnumerable<Video> videos)
+        {
             if (videos != null && videos.Any())
             {
                 foreach (var video in videos)
@@ -78,67 +62,11 @@ namespace Orbi.ViewModels
                 }
             }
         }
-
-        public async Task OpenVideosForSelect()
-        {
-            if (_owner == null)
-                return;
-            
-            var result = await _navigationService.Navigate<VideosViewModel, VideoParameter, VideoAddingCallback>(new VideoParameter
-            {
-                IsSelecting = true,
-                Owner = _owner
-            });
-
-            if (result.UpdateItems)
-                await Initialize();
-        }
-
-        public void AddVideos()
-        {
-            if (!SelectedItems.Any())
-                return;
-
-            foreach (var item in SelectedItems)
-            {
-                _databaseService.AddVideo(item.GUID, _owner.GUID);
-            }
-
-            _navigationService.Close(this, new VideoAddingCallback(true));
-        }
-
-        public void AddSelectedItem(int index)
-        {
-            var cell = Items.ElementAt(index);
-            if (cell != null)
-            {
-                SelectedItems.Add(cell);
-                DoneBtnEnabled = SelectedItems.Any();
-            }
-        }
-
-        public void RemoveSelectedItem(int index)
-        {
-            var cell = Items.ElementAt(index);
-            if (cell != null)
-            {
-                SelectedItems.Remove(cell);
-                DoneBtnEnabled = SelectedItems.Any();
-            }
-        }
     }
 
     public class VideoParameter
     {
-        public bool IsSelecting { get; set; }
         public Album Owner { get; set; }
-    }
-
-    public enum VideoScreenType
-    {
-        All,
-        Custom,
-        Select
     }
 
     public class VideoAddingCallback 

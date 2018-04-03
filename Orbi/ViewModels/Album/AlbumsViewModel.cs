@@ -66,9 +66,8 @@ namespace Orbi.ViewModels
         public void OpenAlbum(AlbumCellViewModel cellVM)
         {
             var album = _databaseService.GetAlbum(cellVM.GUID);
-            _navigationService.Navigate<VideosViewModel, VideoParameter>(new VideoParameter
+            _navigationService.Navigate<AlbumVideosViewModel, VideoParameter>(new VideoParameter
             {
-                IsSelecting = false,
                 Owner = album
             });
         }

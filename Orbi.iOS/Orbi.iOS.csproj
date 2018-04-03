@@ -188,6 +188,8 @@
     <Compile Include="TableSources\AlbumViewCell.designer.cs">
       <DependentUpon>AlbumViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\AlbumVideosView.cs" />
+    <Compile Include="Views\SelectVideosView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orbi\Orbi.csproj">
