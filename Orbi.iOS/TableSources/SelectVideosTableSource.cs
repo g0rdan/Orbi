@@ -6,12 +6,12 @@ using UIKit;
 
 namespace Orbi.iOS
 {
-    public class VideosTableSource : MvxSimpleTableViewSource
+    public class SelectVideosTableSource : MvxSimpleTableViewSource
     {
         public Action<int> SelectedItemAction { get; set; }
         public Action<int> DeselecetdItemAction { get; set; }
 
-        public VideosTableSource(UITableView tableView, string nibName, string cellIdentifier)
+        public SelectVideosTableSource(UITableView tableView, string nibName, string cellIdentifier)
             : base(tableView, nibName, cellIdentifier)
         {
         }

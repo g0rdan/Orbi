@@ -39,6 +39,18 @@ namespace Orbi.Droid.Services
             }
         }
 
+        public void DeleteFile(string filename)
+        {
+            try
+            {
+                File.Delete(Path.Combine(ApplicationFolderPath, filename));
+            }
+            catch (IOException)
+            {
+
+            }
+        }
+
         public byte[] GetVideoFile(string filename)
         {
             var path = Path.Combine(ApplicationFolderPath, filename);

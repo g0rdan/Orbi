@@ -129,6 +129,8 @@ namespace Orbi.Services
             try
             {
                 _connection?.Delete(video);
+                var query = $"DELETE FROM {nameof(AlbumVideo)} WHERE {nameof(AlbumVideo.Video_GUID)} = '{video.GUID}'";
+                _connection.Execute(query);
             }
             catch (SQLiteException)
             {
@@ -183,6 +185,18 @@ namespace Orbi.Services
             catch (SQLiteException)
             {
                 return new List<Album>();
+            }
+        }
+
+        public Video GetVideo(string guid)
+        {
+            try
+            {
+                return _connection?.Get<Video>(guid);
+            }
+            catch (SQLiteException)
+            {
+                return new Video();
             }
         }
 

@@ -53,13 +53,42 @@ namespace Orbi.ViewModels
             {
                 foreach (var video in videos)
                 {
-                    Items.Add(new VideoCellViewModel
+                    var cell = new VideoCellViewModel
                     {
                         GUID = video.GUID,
                         Title = video.Name,
                         Data = _fileService.GetVideoFile(video.FileName)
-                    });
+                    };
+                    cell.DeleteAction = () => DeleteVideoCompletely(cell);
+                    Items.Add(cell);
                 }
+            }
+        }
+
+        public void DeleteVideoCompletely(int index)
+		{
+            var cell = Items.ElementAt(index);
+            DeleteVideoCompletely(cell);
+		}
+
+        public void DeleteVideoCompletely(VideoCellViewModel cell)
+        {
+            if (cell != null)
+            {
+                Items.Remove(cell);
+                var video = _databaseService.GetVideo(cell.GUID);
+                DeleteVideoCompletely(video);    
+            }
+        }
+		/// <summary>
+		/// Removing video from database and from disk
+		/// </summary>
+        void DeleteVideoCompletely(Video video)
+        {
+            if (video != null)
+            {
+                _databaseService.DeleteVideo(video);
+                _fileService.DeleteFile(video.FileName);
             }
         }
     }

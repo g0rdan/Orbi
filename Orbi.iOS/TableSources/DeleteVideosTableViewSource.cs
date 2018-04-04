@@ -5,11 +5,11 @@ using UIKit;
 
 namespace Orbi.iOS.TableSources
 {
-    public class AlbumVideosTableViewSource : MvxSimpleTableViewSource
+    public class DeleteVideosTableViewSource : MvxSimpleTableViewSource
     {
         public Action<int> DeleteVideoAction { get; set; }
 
-        public AlbumVideosTableViewSource(UITableView tableView, string nibName, string cellIdentifier)
+        public DeleteVideosTableViewSource(UITableView tableView, string nibName, string cellIdentifier)
             : base(tableView, nibName, cellIdentifier)
         {
         }

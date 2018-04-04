@@ -15,7 +15,7 @@ namespace Orbi.iOS.Views
         UIBarButtonItem _addBtn;
         UILabel _titleLabel;
         UITableView _videosTableView;
-        AlbumVideosTableViewSource _source;
+        DeleteVideosTableViewSource _source;
 
         public AlbumVideosView()
         {
@@ -58,7 +58,7 @@ namespace Orbi.iOS.Views
         {
             _videosTableView = new UITableView(View.Frame);
             _videosTableView.TableFooterView = new UIView();
-            _source = new AlbumVideosTableViewSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
+            _source = new DeleteVideosTableViewSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
             _source.DeleteVideoAction = DeleteCell;
             _videosTableView.Source = _source;
             View.AddSubview(_videosTableView);

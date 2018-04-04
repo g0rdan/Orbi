@@ -183,7 +183,7 @@
     <AndroidResource Include="Resources\layout\MainView.axml" />
     <AndroidResource Include="Resources\layout\VideosView.axml" />
     <AndroidResource Include="Resources\layout\AlbumsView.axml" />
-    <AndroidResource Include="Resources\layout\video_cell_view.axml" />
+    <AndroidResource Include="Resources\layout\select_video_cell_view.axml" />
     <AndroidResource Include="Resources\values\Dimens.xml" />
     <AndroidResource Include="Resources\menu\right_menu.xml" />
     <AndroidResource Include="Resources\mipmap-hdpi\ic_add_white.png" />
@@ -205,7 +205,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_done_white.png" />
     <AndroidResource Include="Resources\layout\SelectVideosView.axml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
-    <AndroidResource Include="Resources\layout\album_video_cell_view.axml" />
+    <AndroidResource Include="Resources\layout\video_cell_view.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

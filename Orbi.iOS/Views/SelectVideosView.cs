@@ -15,7 +15,7 @@ namespace Orbi.iOS.Views
         UIBarButtonItem _doneBtn;
         UILabel _titleLabel;
         UITableView _videosTableView;
-        VideosTableSource _source;
+        SelectVideosTableSource _source;
 
         public SelectVideosView()
         {
@@ -59,7 +59,7 @@ namespace Orbi.iOS.Views
         {
             _videosTableView = new UITableView(View.Frame);
             _videosTableView.TableFooterView = new UIView();
-            _source = new VideosTableSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
+            _source = new SelectVideosTableSource(_videosTableView, AllVideosViewCell.Key, AllVideosViewCell.Key);
             _source.SelectedItemAction = ItemSelected;
             _source.DeselecetdItemAction = ItemDeselected;
             _videosTableView.Source = _source;

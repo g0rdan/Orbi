@@ -33,6 +33,7 @@ namespace Orbi.Services
         /// </summary>
         /// <returns>The albums.</returns>
         Task<List<Album>> GetAlbumsAsync();
+        Video GetVideo(string guid);
         /// <summary>
         /// Get all videos from database
         /// </summary>

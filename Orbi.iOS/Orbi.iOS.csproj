@@ -175,7 +175,7 @@
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Views\VideosView.cs" />
     <Compile Include="Views\AlbumsView.cs" />
-    <Compile Include="TableSources\VideosTableSource.cs" />
+    <Compile Include="TableSources\SelectVideosTableSource.cs" />
     <Compile Include="TableSources\AllVideosViewCell.cs" />
     <Compile Include="TableSources\AllVideosViewCell.designer.cs">
       <DependentUpon>AllVideosViewCell.cs</DependentUpon>
@@ -188,7 +188,7 @@
     </Compile>
     <Compile Include="Views\AlbumVideosView.cs" />
     <Compile Include="Views\SelectVideosView.cs" />
-    <Compile Include="TableSources\AlbumVideosTableViewSource.cs" />
+    <Compile Include="TableSources\DeleteVideosTableViewSource.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -24,5 +24,9 @@ namespace Orbi.Services
         /// Gets video files from home folder as byte array
         /// </summary>
         byte[] GetVideoFile(string filename);
+        /// <summary>
+        /// Deletes the file in work folder
+        /// </summary>
+        void DeleteFile(string filename);
     }
 }
