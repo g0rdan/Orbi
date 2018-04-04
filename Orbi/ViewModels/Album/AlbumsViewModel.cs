@@ -90,7 +90,7 @@ namespace Orbi.ViewModels
             Albums.Remove(albumCellVM);
         }
 
-        async Task CreateAlbum()
+        public async Task CreateAlbum()
         {
             var result = await _dialogService.AskToAddAlbum();
             if (result.IsOk)

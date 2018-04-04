@@ -3785,6 +3785,12 @@ namespace Orbi.Droid
 			// aapt resource value: 0x7f08000a
 			public const int abc_text_size_title_material_toolbar = 2131230730;
 			
+			// aapt resource value: 0x7f08009e
+			public const int album_cell_height = 2131230878;
+			
+			// aapt resource value: 0x7f08009f
+			public const int big_padding = 2131230879;
+			
 			// aapt resource value: 0x7f08008b
 			public const int compat_button_inset_horizontal_material = 2131230859;
 			
@@ -4006,6 +4012,12 @@ namespace Orbi.Droid
 			
 			// aapt resource value: 0x7f08009a
 			public const int notification_top_pad_large_text = 2131230874;
+			
+			// aapt resource value: 0x7f0800a0
+			public const int small_padding = 2131230880;
+			
+			// aapt resource value: 0x7f08009d
+			public const int text_size = 2131230877;
 			
 			// aapt resource value: 0x7f080059
 			public const int tooltip_corner_radius = 2131230809;

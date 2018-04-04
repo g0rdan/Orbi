@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:MvxBind="Click OpenCommand"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="@dimen/album_cell_height"
     android:background="@android:color/white">
     <TextView
         app:MvxBind="Text Name"
         android:textColor="@android:color/black"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:paddingLeft="10dp"
-        android:textSize="20dp"
+        android:paddingLeft="@dimen/small_padding"
+        android:textSize="@dimen/text_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageButton
@@ -19,7 +19,7 @@
         android:src="@mipmap/ic_delete_black"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:paddingRight="20dp"
+        android:paddingRight="@dimen/big_padding"
         android:background="@android:color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

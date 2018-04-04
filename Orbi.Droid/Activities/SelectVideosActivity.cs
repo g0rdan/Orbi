@@ -113,11 +113,13 @@ namespace Orbi.Droid.Activities
             var index = _selectedIndexes.FirstOrDefault(x => x == position);
             if (index == null)
             {
+                view.SetBackgroundColor(Android.Graphics.Color.LightGray);
                 _selectedIndexes.Add(position);
                 ItemSelected?.Invoke(position);
             }
             else
             {
+                view.SetBackgroundColor(Android.Graphics.Color.White);
                 _selectedIndexes.Remove(position);
                 ItemDeselected?.Invoke(position);
             }

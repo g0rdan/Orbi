@@ -36,7 +36,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -48,7 +48,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -60,7 +60,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -74,7 +74,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -86,7 +86,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -106,7 +106,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -120,7 +120,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -132,7 +132,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -144,7 +144,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
@@ -158,7 +158,7 @@ namespace Orbi.Services
             }
             catch (SQLiteException)
             {
-
+                //handling situation
             }
         }
 
